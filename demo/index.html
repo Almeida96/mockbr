@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generate repeatable Brazilian test fixtures with CPF, numeric or alphanumeric CNPJ, and contact fields.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MockBR — Test fixtures</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#result">Skip to output</a>
+  <header><a class="brand" href="./"><img src="./icon.svg" alt="" width="32" height="32">MockBR <span>0.1.0</span></a><nav aria-label="Project"><a href="https://github.com/Almeida96/mockbr#command-line">Documentation</a><a href="https://github.com/Almeida96/mockbr">GitHub <span aria-hidden="true">↗</span></a></nav></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">FIXTURE GENERATOR</p><h1>Brazilian data for tests.</h1><p>Choose a record type and seed. Copy the output or download a fixture.</p></div><span class="local"><span aria-hidden="true">●</span> Runs in your browser</span></div>
+    <div class="workspace">
+      <aside>
+        <form id="generator">
+          <div class="panel-title"><h2>Configuration</h2></div>
+          <label for="kind">Record type</label><select id="kind"><option value="person">People</option><option value="company">Companies</option><option value="cpf">CPF numbers</option><option value="cnpj">CNPJ numbers</option><option value="address">Addresses</option><option value="phone">Phone numbers</option></select>
+          <div class="two-fields"><div><label for="count">Records</label><input id="count" type="number" min="1" max="1000" step="1" value="5" required></div><div><label for="state">State</label><select id="state"><option value="">Any state</option></select></div></div>
+          <label for="seed">Seed</label><div class="seed-field"><input id="seed" value="checkout" maxlength="128" required spellcheck="false"><button id="new-seed" type="button" aria-label="Choose a new seed" title="Choose a new seed">↻</button></div><p class="hint">Reuse a seed to reproduce the same records.</p>
+          <label for="cnpj-type">CNPJ format</label><select id="cnpj-type" disabled><option value="alphanumeric">Alphanumeric</option><option value="numeric">Numeric</option></select>
+          <label class="checkbox"><input id="formatted" type="checkbox" checked>Format documents and phone numbers</label>
+          <button class="primary generate" type="submit">Generate data <span aria-hidden="true">→</span></button>
+          <p id="error" class="error" role="alert" hidden></p>
+        </form>
+        <section class="fixture-note"><h2>About these records</h2><p>Names and contact fields are generated. Emails use <code>example.test</code>. Addresses are placeholders.</p><p>CPF and CNPJ checksums are valid, but records are not checked against registries. Numbers may coincide with real ones.</p><a href="https://github.com/Almeida96/mockbr#data-boundaries">Data boundaries <span aria-hidden="true">↗</span></a></section>
+      </aside>
+      <section id="result" class="result" aria-label="Generated fixtures" tabindex="-1">
+        <div class="result-header"><div><span class="file-icon" aria-hidden="true">{ }</span><strong id="output-name">people.json</strong></div><span id="output-size"></span></div>
+        <div class="output-toolbar"><div class="formats" role="group" aria-label="Output format"><button type="button" data-format="json" aria-pressed="true">JSON</button><button type="button" data-format="jsonl" aria-pressed="false">JSONL</button><button type="button" data-format="csv" aria-pressed="false">CSV</button></div><div class="output-actions"><button id="copy" type="button">Copy</button><button id="download" type="button">Download <span aria-hidden="true">↓</span></button></div></div>
+        <pre id="output" tabindex="0" aria-label="Generated data"></pre>
+        <div class="result-footer"><span id="record-summary"></span><span id="checksum-summary"></span></div>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+    <section class="usage"><div><p class="eyebrow">USE IN YOUR PROJECT</p><h2>Same generator, from the command line.</h2><p>Command shown for a POSIX shell. See the README for library imports.</p></div><pre id="command" aria-label="Equivalent CLI command"></pre></section>
+    <footer><span>MockBR · MIT license</span><span>Data stays in memory until you copy or download it.</span><a href="https://github.com/Almeida96/mockbr/releases">Download package <span aria-hidden="true">↗</span></a></footer>
+  </main>
+</body>
+</html>
