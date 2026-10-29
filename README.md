@@ -8,10 +8,10 @@ People, companies, CPF, CNPJ, addresses, and mobile numbers. No runtime dependen
 
 ## Install
 
-Requires Node.js 22 or later. Download `mockbr-0.1.0.tgz` from [Releases](https://github.com/Almeida96/mockbr/releases/tag/v0.1.0), then install the local archive:
+Requires Node.js 22 or later. Build the package from this checkout with `pnpm install --frozen-lockfile` and `pnpm pack --out mockbr-0.2.0.tgz`, then install the archive:
 
 ```sh
-npm install ./mockbr-0.1.0.tgz
+npm install ./mockbr-0.2.0.tgz
 ```
 
 The package is distributed through GitHub Releases; it is not published to the npm registry.
@@ -107,6 +107,26 @@ JSON uses two-space indentation. JSON Lines writes one record per line. CSV uses
 
 CSV preserves values, including leading zeros and the `+` in phone numbers. Spreadsheet programs may interpret these as numbers or formulas even when quoted. Import those columns as text, or use JSON when exact string values matter. CSV serialization supports plain objects with scalar fields; arrays and keys containing dots are rejected.
 
+## Linked shop fixtures
+
+Generate a small database fixture instead of disconnected records:
+
+```sh
+node bin/mockbr.js dataset --seed checkout --customers 20 --products 10 --count 50 --out shop.json
+```
+
+```js
+import { generateDataset } from '@almeida96/mockbr';
+const shop = generateDataset({ seed: 'checkout', state: 'SP', customers: 20, products: 10, orders: 50 });
+const customer = shop.customers.find(row => row.id === shop.orders[0].customerId);
+```
+
+The JSON object contains `version: 1`, `customers`, `products`, and `orders`. Customer IDs, CPFs and test emails are unique within one dataset. Orders reference existing customers and products; each product appears at most once per order. `totalCents` equals the sum of quantity × unit price. All amounts use integer BRL cents, without discounts, shipping or taxes.
+
+Dates are generated within 2025 in UTC, independent of the machine clock. Statuses are `pending`, `paid`, `shipped`, or `cancelled`; they are fixture labels, not a payment workflow. The same version and options reproduce the whole dataset. IDs are local to a dataset and must not be merged across seeds without remapping.
+
+Each collection supports 0–10,000 records. Nonempty orders require at least one customer and product. The CLI defaults to 20 customers, 10 products and 50 orders; `--count` controls orders. Datasets use JSON only because CSV would lose nested order items. In the browser choose **Shop dataset**, then copy or download the same structure.
+
 ## Data boundaries
 
 - CPF and CNPJ checks confirm syntax and check digits only. They do not check registration, ownership, or tax status.
@@ -136,7 +156,7 @@ node bin/mockbr.js person --count 3 --seed checkout
 Build and verify the release archive:
 
 ```sh
-pnpm pack --out mockbr-0.1.0.tgz
+pnpm pack --out mockbr-0.2.0.tgz
 pnpm pack:check
 ```
 

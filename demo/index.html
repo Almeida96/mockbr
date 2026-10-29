@@ -12,15 +12,16 @@
 </head>
 <body>
   <a class="skip" href="#result">Skip to output</a>
-  <header><a class="brand" href="./"><img src="./icon.svg" alt="" width="32" height="32">MockBR <span>0.1.0</span></a><nav aria-label="Project"><a href="https://github.com/Almeida96/mockbr#command-line">Documentation</a><a href="https://github.com/Almeida96/mockbr">GitHub <span aria-hidden="true">↗</span></a></nav></header>
+  <header><a class="brand" href="./"><img src="./icon.svg" alt="" width="32" height="32">MockBR <span>0.2.0</span></a><nav aria-label="Project"><a href="https://github.com/Almeida96/mockbr#command-line">Documentation</a><a href="https://github.com/Almeida96/mockbr">GitHub <span aria-hidden="true">↗</span></a></nav></header>
   <main>
     <div class="intro"><div><p class="eyebrow">FIXTURE GENERATOR</p><h1>Brazilian data for tests.</h1><p>Choose a record type and seed. Copy the output or download a fixture.</p></div><span class="local"><span aria-hidden="true">●</span> Runs in your browser</span></div>
     <div class="workspace">
       <aside>
         <form id="generator">
           <div class="panel-title"><h2>Configuration</h2></div>
-          <label for="kind">Record type</label><select id="kind"><option value="person">People</option><option value="company">Companies</option><option value="cpf">CPF numbers</option><option value="cnpj">CNPJ numbers</option><option value="address">Addresses</option><option value="phone">Phone numbers</option></select>
-          <div class="two-fields"><div><label for="count">Records</label><input id="count" type="number" min="1" max="1000" step="1" value="5" required></div><div><label for="state">State</label><select id="state"><option value="">Any state</option></select></div></div>
+          <label for="kind">Record type</label><select id="kind"><option value="person">People</option><option value="dataset">Shop dataset</option><option value="company">Companies</option><option value="cpf">CPF numbers</option><option value="cnpj">CNPJ numbers</option><option value="address">Addresses</option><option value="phone">Phone numbers</option></select>
+          <div class="two-fields"><div><label id="count-label" for="count">Records</label><input id="count" type="number" min="1" max="1000" step="1" value="5" required></div><div><label for="state">State</label><select id="state"><option value="">Any state</option></select></div></div>
+          <div id="dataset-fields" hidden><div class="two-fields"><div><label for="customers">Customers</label><input id="customers" type="number" min="1" max="1000" step="1" value="20" required></div><div><label for="products">Products</label><input id="products" type="number" min="1" max="1000" step="1" value="10" required></div></div><p class="hint">Orders reference these customers and products. Prices and totals use BRL cents. JSON output preserves the relationships.</p></div>
           <label for="seed">Seed</label><div class="seed-field"><input id="seed" value="checkout" maxlength="128" required spellcheck="false"><button id="new-seed" type="button" aria-label="Choose a new seed" title="Choose a new seed">↻</button></div><p class="hint">Reuse a seed to reproduce the same records.</p>
           <label for="cnpj-type">CNPJ format</label><select id="cnpj-type" disabled><option value="alphanumeric">Alphanumeric</option><option value="numeric">Numeric</option></select>
           <label class="checkbox"><input id="formatted" type="checkbox" checked>Format documents and phone numbers</label>

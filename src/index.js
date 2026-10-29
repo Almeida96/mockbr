@@ -4,9 +4,10 @@ import { locations, firstNames, lastNames, companyWords, companyActivities } fro
 
 export { cpfCheckDigits, cnpjCheckDigits, formatCPF, formatCNPJ, isCPF, isCNPJ } from './documents.js';
 export { serialize } from './serialize.js';
+export { generateDataset } from './dataset.js';
 export const STATES = Object.freeze(locations.map(([state]) => state));
 export const KINDS = Object.freeze(['person', 'company', 'cpf', 'cnpj', 'address', 'phone']);
-export const VERSION = '0.1.0';
+export const VERSION = '0.2.0';
 
 export function createMock(options = {}) {
   if (!options || typeof options !== 'object' || Array.isArray(options)) throw new TypeError('Options must be an object.');
