@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, writeFileSync, rmSync, statSync } from 'node
 import { tmpdir } from 'node:os';
 import { resolve, join, sep } from 'node:path';
 
-const archive = resolve('mockbr-0.1.0.tgz');
+const archive = resolve('mockbr-0.2.0.tgz');
 const temp = mkdtempSync(join(tmpdir(), 'mockbr-package-'));
 function run(command, args, cwd = temp) {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8' });

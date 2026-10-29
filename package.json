@@ -1,18 +1,38 @@
 {
   "name": "@almeida96/mockbr",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Seeded Brazilian test data for JavaScript, Node.js, and the command line.",
   "type": "module",
   "license": "MIT",
   "author": "Igor Almeida",
-  "engines": { "node": ">=22" },
-  "repository": { "type": "git", "url": "https://github.com/Almeida96/mockbr.git" },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Almeida96/mockbr.git"
+  },
   "homepage": "https://almeida96.github.io/mockbr/",
-  "bugs": { "url": "https://github.com/Almeida96/mockbr/issues" },
-  "exports": { ".": { "types": "./index.d.ts", "import": "./src/index.js" } },
+  "bugs": {
+    "url": "https://github.com/Almeida96/mockbr/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
   "types": "./index.d.ts",
-  "bin": { "mockbr": "./bin/mockbr.js" },
-  "files": ["src", "bin", "index.d.ts", "README.md", "LICENSE"],
+  "bin": {
+    "mockbr": "./bin/mockbr.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "sideEffects": false,
   "scripts": {
     "check": "node scripts/check.mjs && tsc -p test/types/tsconfig.json",
@@ -22,5 +42,7 @@
     "pack:check": "node scripts/check-package.mjs"
   },
   "packageManager": "pnpm@11.25.0",
-  "devDependencies": { "typescript": "7.0.2" }
+  "devDependencies": {
+    "typescript": "7.0.2"
+  }
 }

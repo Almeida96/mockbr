@@ -1,4 +1,8 @@
 import { createMock, generate, serialize, isCPF, STATES, type Person, type Company, type StateCode } from '@almeida96/mockbr';
+import { generateDataset, type Dataset } from '@almeida96/mockbr';
+const dataset: Dataset = generateDataset({ customers: 3, products: 5, orders: 10 });
+const total: number = dataset.orders[0]!.totalCents;
+void total;
 
 const people: Person[] = generate('person', 3, { seed: 'checkout', state: 'SP' });
 const companies: Company[] = createMock({ seed: 42, cnpjType: 'numeric' }).many('company', 5);

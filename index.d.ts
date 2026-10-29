@@ -28,3 +28,10 @@ export function formatCNPJ(value: string): string;
 export function cpfCheckDigits(base: string): string;
 export function cnpjCheckDigits(base: string): string;
 export function serialize(records: readonly RecordMap[Kind][], format?: OutputFormat): string;
+export interface DatasetOptions { seed?: string | number; state?: StateCode; formatted?: boolean; customers?: number; products?: number; orders?: number }
+export interface Customer extends Person { id: string }
+export interface Product { id: string; name: string; priceCents: number; currency: 'BRL' }
+export interface OrderItem { productId: string; quantity: number; unitPriceCents: number }
+export interface Order { id: string; customerId: string; createdAt: string; status: 'pending' | 'paid' | 'shipped' | 'cancelled'; currency: 'BRL'; items: OrderItem[]; totalCents: number }
+export interface Dataset { version: 1; customers: Customer[]; products: Product[]; orders: Order[] }
+export function generateDataset(options?: DatasetOptions): Dataset;
