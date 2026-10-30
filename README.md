@@ -1,5 +1,7 @@
 # MockBR
 
+[![CI](https://github.com/Almeida96/mockbr/actions/workflows/ci.yml/badge.svg)](https://github.com/Almeida96/mockbr/actions/workflows/ci.yml)
+
 Generate Brazilian test data with a repeatable seed. Use it as a JavaScript library, a command-line tool, or in the [browser demo](https://almeida96.github.io/mockbr/).
 
 People, companies, CPF, CNPJ, addresses, and mobile numbers. No runtime dependencies or network requests. TypeScript declarations are included.
@@ -164,4 +166,4 @@ CI checks JavaScript syntax, TypeScript consumer declarations, the test suite, a
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [MIT license](LICENSE).
